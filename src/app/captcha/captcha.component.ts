@@ -18,9 +18,10 @@ export class CaptchaComponent implements OnInit {
     this._renderer.appendChild(document.body, script);
   }
 
-  resolved(token){
+  resolved(token:string){
     console.log(token);
-    this._http.post('', {token: token}).subscribe(
+    const nonce = "nonce";
+    this._http.post('localhost:8080', { token, nonce }).subscribe(
       res => {
         console.log("success?", res);
       }
