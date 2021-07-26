@@ -1,1 +1,3 @@
-<app-captcha></app-captcha>
+<app-captcha [apiBaseUrl]="captchaApiBaseUrl"
+                  [nonce]="nonce"
+                  (onValidToken)="handleToken($event)"></app-captcha>

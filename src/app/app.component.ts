@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  captchaApiBaseUrl: string = "http://localhost:8080";
+  nonce: string = "UUID.UUID()";
   title = 'captcha-POC';
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, Renderer2} from '@angular/core';
+import { Component, OnInit, Renderer2, Output, Input,EventEmitter} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CaptchaDataService } from './captcha-data.service';
 
 @Component({
   selector: 'app-captcha',
@@ -8,7 +9,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CaptchaComponent implements OnInit {
 
-  constructor( private _renderer: Renderer2, private _http: HttpClient ) { }
+  @Input('apiBaseUrl') apiBaseUrl: string;
+  @Input('nonce') nonce: string;
+
+  @Output() onValidToken = new EventEmitter<string>();
+
+  constructor( private dataService: CaptchaDataService, private _renderer: Renderer2, private _http: HttpClient ) { }
 
   ngOnInit():void {
     let script = this._renderer.createElement('script');
@@ -21,10 +27,14 @@ export class CaptchaComponent implements OnInit {
   resolved(token:string){
     console.log(token);
     const nonce = "nonce";
-    this._http.post('localhost:8080', { token, nonce }).subscribe(
-      res => {
-        console.log("success?", res);
-      }
-    )
+    // this._http.post('localhost:8080', { token, nonce }).subscribe(
+    //   res => {
+    //     console.log("success?", res);
+    //   }
+    // )
+    this.dataService.verifyCaptcha(this.apiBaseUrl, this.nonce, token).subscribe(response => {
+      const payload = response.body;
+
+    });
   }
 }

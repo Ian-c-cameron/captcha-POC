@@ -2,20 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CaptchaComponent } from './captcha/captcha.component';
-import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { HttpClientModule } from '@angular/common/http';
+import { CaptchaModule } from './captcha/captcha.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CaptchaComponent
   ],
   imports: [
     BrowserModule,
-    RecaptchaModule,
-    RecaptchaFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
