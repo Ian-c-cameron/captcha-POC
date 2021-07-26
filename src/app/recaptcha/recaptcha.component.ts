@@ -1,20 +1,20 @@
 import { Component, OnInit, Renderer2, Output, Input,EventEmitter} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CaptchaDataService } from './captcha-data.service';
+import { RecaptchaDataService } from './recaptcha-data.service';
 
 @Component({
-  selector: 'app-captcha',
-  templateUrl: './captcha.component.html',
-  styleUrls: ['./captcha.component.css']
+  selector: 'common-recaptcha',
+  templateUrl: './recaptcha.component.html',
+  styleUrls: ['./recaptcha.component.css']
 })
-export class CaptchaComponent implements OnInit {
+export class RecaptchaComponent implements OnInit {
 
   @Input('apiBaseUrl') apiBaseUrl: string;
   @Input('nonce') nonce: string;
 
   @Output() onValidToken = new EventEmitter<string>();
 
-  constructor( private dataService: CaptchaDataService, private _renderer: Renderer2, private _http: HttpClient ) { }
+  constructor( private dataService: RecaptchaDataService, private _renderer: Renderer2, private _http: HttpClient ) { }
 
   ngOnInit():void {
     let script = this._renderer.createElement('script');
@@ -32,7 +32,7 @@ export class CaptchaComponent implements OnInit {
     //     console.log("success?", res);
     //   }
     // )
-    this.dataService.verifyCaptcha(this.apiBaseUrl, this.nonce, token).subscribe(response => {
+    this.dataService.verifyRecaptcha(this.apiBaseUrl, this.nonce, token).subscribe(response => {
       const payload = response.body;
 
     });

@@ -2,13 +2,13 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
-import { CaptchaComponent } from './captcha.component';
-import { CaptchaDataService } from './captcha-data.service';
+import { RecaptchaComponent } from './recaptcha.component';
+import { RecaptchaDataService } from './recaptcha-data.service';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    CaptchaComponent
+    RecaptchaComponent
   ],
   imports: [
     HttpClientModule,
@@ -17,17 +17,17 @@ import { CommonModule } from '@angular/common';
     RecaptchaFormsModule,
   ],
   providers: [
-    CaptchaDataService
+    RecaptchaDataService
   ],
   exports: [
-    CaptchaComponent
+    RecaptchaComponent
   ],
 })
-export class CaptchaModule {
-  static forRoot(): ModuleWithProviders<CaptchaModule> {
+export class ReCaptchaModule {
+  static forRoot(): ModuleWithProviders<ReCaptchaModule> {
     return {
-      ngModule: CaptchaModule,
-      providers: [CaptchaDataService]
+      ngModule: ReCaptchaModule,
+      providers: [RecaptchaDataService]
     };
   }
 }

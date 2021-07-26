@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CaptchaModule } from './captcha/captcha.module';
+import { ReCaptchaModule } from './recaptcha/recaptcha.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { CaptchaModule } from './captcha/captcha.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    CaptchaModule
+    ReCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

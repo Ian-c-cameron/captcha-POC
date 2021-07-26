@@ -11,10 +11,10 @@ export class ServerPayload {
 }
 
 @Injectable()
-export class CaptchaDataService {
+export class RecaptchaDataService {
   constructor(private httpClient: HttpClient) { }
 
-  public verifyCaptcha(apiBaseUrl: string,
+  public verifyRecaptcha(apiBaseUrl: string,
                           nonce: string,
                           token: string): Observable<HttpResponse<ServerPayload>> {
       return this.httpClient
