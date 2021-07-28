@@ -11,6 +11,7 @@ export class RecaptchaComponent implements OnInit {
 
   @Input('apiBaseUrl') apiBaseUrl: string;
   @Input('nonce') nonce: string;
+  @Input('publicKey') publicKey: string;
 
   @Output() onValidToken = new EventEmitter<string>();
 
